@@ -15,6 +15,7 @@ class App extends React.Component {
     this.removeFish = this.removeFish.bind(this);
     this.loadFishes = this.loadFishes.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.removeFromOrder = this.removeFromOrder.bind(this);
     // Initialize state
     this.state = {
       fishes: {},
@@ -77,6 +78,12 @@ componentWillUpdate(nextProps, nextState) {
     this.setState({order})
   }
 
+  removeFromOrder(key) {
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({order})
+  }
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -86,7 +93,7 @@ componentWillUpdate(nextProps, nextState) {
             {Object.keys(this.state.fishes).map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order}/>
+        <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder}/>
         <Inventory addFish={this.addFish} loadSamples={this.loadFishes} fishes={this.state.fishes} updatedFish={this.updatedFish} removeFish={this.removeFish}/>
       </div>
     )
