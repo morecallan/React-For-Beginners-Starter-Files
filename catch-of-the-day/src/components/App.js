@@ -10,6 +10,7 @@ class App extends React.Component {
     super();
 
     this.addFish = this.addFish.bind(this);
+    this.updatedFish = this.updatedFish.bind(this);
     this.loadFishes = this.loadFishes.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
     // Initialize state
@@ -26,6 +27,12 @@ class App extends React.Component {
     this.setState({fishes});
     // nope. this is less performant.
     // this.state.fishes.fish1 = fish;
+  }
+
+  updatedFish(key, updatedFish) {
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({fishes});
   }
 
   loadFishes(){
@@ -48,7 +55,7 @@ class App extends React.Component {
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order}/>
-        <Inventory addFish={this.addFish} loadSamples={this.loadFishes}/>
+        <Inventory addFish={this.addFish} loadSamples={this.loadFishes} fishes={this.state.fishes} updatedFish={this.updatedFish}/>
       </div>
     )
   }
