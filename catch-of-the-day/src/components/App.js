@@ -7,7 +7,7 @@ import sampleFishes from '../sample-fishes'
 
 class App extends React.Component {
   constructor(){
-    super();
+    super(); 
 
     this.addFish = this.addFish.bind(this);
     this.updatedFish = this.updatedFish.bind(this);
@@ -39,7 +39,6 @@ class App extends React.Component {
   removeFish(key) {
     const fishes = {...this.state.fishes};
     fishes[key] = null;
-    console.log(fishes);
     this.setState({fishes});
   }
 
