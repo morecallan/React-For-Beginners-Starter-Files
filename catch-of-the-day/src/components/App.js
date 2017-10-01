@@ -75,6 +75,7 @@ componentWillUpdate(nextProps, nextState) {
   addToOrder(key) {
     const order = {...this.state.order};
     order[key] = order[key] + 1 || 1;
+    console.log(order)
     this.setState({order})
   }
 
