@@ -32,9 +32,24 @@ class Inventory extends React.Component {
         <button onClick={() => this.props.removeFish(key)}>Remove Fish</button>
       </div>
     )
+
+
+  renderLogin(){
+    return (
+      <nav className="login">
+        <h2>Inventory</h2>
+        <p>Sign in to manage your store's inventory.</p>
+        <button className="github" onClick={() => this.authenticate('google')}>Log In WIth Google</button>
+      </nav>
+    )
   }
 
   render () {
+    // Render if user is not logged in
+    if (!this.state.uid) {
+      return <div>{this.renderLogin}</div>
+    }
+
     return (
       <div>
         <h2>Inventory</h2>
